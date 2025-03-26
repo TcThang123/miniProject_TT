@@ -1,7 +1,7 @@
 const { timeStamp } = require("console")
 const mongoose = require("mongoose")
 
-const accountSchema = mongoode.Schema({
+const accountSchema = mongoose.Schema({
     username : {
         type : String,
         required : true,
@@ -15,15 +15,17 @@ const accountSchema = mongoode.Schema({
         type : String,
         require : true,
         unique : true
-    }
+    },
     address : {
         type : String
-    }
+    },
     role : {
         type : String,
         default : "user"
     }
 }, {
-    versionKey : false
+    versionKey : false,
     timeStamps : true
 })
+
+module.exports = mongoose.model("account", accountSchema)
