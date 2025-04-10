@@ -4,10 +4,11 @@ const router = express.Router()
 
 const {
     getProducts,
+    getOneProduct,
     createProduct,
     updateProduct,
     deleteProduct
-} = require("../controllers/product.controller")
+} = require("../controllers/productController")
 
 router
 .route("/")
@@ -16,6 +17,7 @@ router
 
 router
 .route("/:id")
+.get(getOneProduct)
 .patch(updateProduct)
 .delete(deleteProduct)
 

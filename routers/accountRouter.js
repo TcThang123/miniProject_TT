@@ -4,11 +4,11 @@ const router = express.Router()
 
 const {
     getAcounts,
-    //getOneAccount,
+    getOneAccount,
     createAccount,
     updateAccount,
     deleteAccount
-} = require("../controllers/account.controller")
+} = require("../controllers/accountController")
 
 router
 .route("/")
@@ -17,12 +17,12 @@ router
 
 router
 .route("/:id")
-//.get(getOneAccount)
+.get(getOneAccount)
 .patch(updateAccount)
 .delete(deleteAccount)
 
-router.get("/", (req, res, next) => {
+/* router.get("/", (req, res, next) => {
     res.send("Acc")
-})
+}) */
 
 module.exports = router

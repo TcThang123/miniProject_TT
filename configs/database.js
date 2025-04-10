@@ -3,8 +3,8 @@ const mongoose = require("mongoose")
 module.exports = connectDB = async()=>{
     try {
         await mongoose.connect("mongodb://localhost:27017/crud")
-        console.log("kết nối db thành công")
+        console.log("DB successfully connected")
     } catch(error) {
-        console.log("lỗi kết nối db: " + error.massage)
+        console.log("DB Error: " + error.massage)
     }
 }
