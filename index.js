@@ -2,7 +2,10 @@ const express = require("express")
 const app = express()
 const connectDB = require("./configs/database")
 const accountRouter = require("./routers/accountRouter")
-
+const productRouter = require("./routers/productRouter")
+const projectRouter = require("./routers/projectRouter")
+const saleRouter = require("./routers/saleRouter")
+const customerRouter = require("./routers/customerRouter")
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
@@ -13,6 +16,10 @@ connectDB();
 //routers(app)
 
 app.use("/api/accounts", accountRouter)
+app.use("/api/products", productRouter)
+app.use("/api/projects", projectRouter)
+app.use("/api/sales", saleRouter)
+app.use("/api/customers", customerRouter)
 
 
 app.listen(5000, () => {

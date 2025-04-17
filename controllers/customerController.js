@@ -1,4 +1,4 @@
-const customerModel = requrie("../models/customerModel")
+const customerModel = require("../models/customerModel")
 
 module.exports = {
 

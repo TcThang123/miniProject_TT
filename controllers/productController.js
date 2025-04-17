@@ -7,7 +7,7 @@ module.exports = {
         return res.status().json(products)
     },
 
-    getOnrProduct: async(req, res, next) => {
+    getOneProduct: async(req, res, next) => {
         const id = req.params.id
         const product = await productModel.findById(id)
         return res.status().json(product)

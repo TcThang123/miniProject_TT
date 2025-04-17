@@ -1,32 +1,29 @@
 const { timeStamp } = require("console")
 const mongoose = require("mongoose")
-const { type } = require("os")
+const Schema = mongoose.Schema
 
-const projectSchema = mongoose.Schema({
-    projectName: {
+const projectSchema = Schema({
+    name: {
         type: String,
         required: true,
         unique: true,
+        trim: true
     },
-    projectDescription: {
+    description: {
         type: String
     },
-    projectSale: {
+    sale: {
+        type: Schema.Types.ObjectId,
+        ref: "saleModel"
+    },
+    status: {
         type: String,
-        required: true
-    },
-    projectStatus: {
-        type: String,
-        enum: ["draft", "active", "deleted"]
-    },
-    projectCreatedAt: {
-        type: Date,
-        //default: Date.now
-    },
-    projectUpdatedAt: {
-        type: Date,
-        //default: Date.now
+        enum: ["draft", "active", "deleted"],
+        default: "draft"
     }
+}, {
+    timestamps: true,
+    versionKey: false
 })
 
 module.exports = mongoose.model("project", projectSchema)

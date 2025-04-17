@@ -1,11 +1,13 @@
 const { timeStamp } = require("console")
 const mongoose = require("mongoose")
+const Schema = mongoose.Schema
 
-const accountSchema = mongoose.Schema({
+const accountSchema = Schema({
     username: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        trim: true
     },
     password: {
         type: String,
@@ -25,7 +27,7 @@ const accountSchema = mongoose.Schema({
     }
 }, {
     versionKey: false,
-    timeStamps: true
+    timestamps: true
 })
 
 module.exports = mongoose.model("account", accountSchema)
