@@ -12,9 +12,9 @@ const projectSchema = Schema({
     description: {
         type: String
     },
-    sale: {
+    owner: {
         type: Schema.Types.ObjectId,
-        ref: "saleModel"
+        ref: "sale"
     },
     status: {
         type: String,

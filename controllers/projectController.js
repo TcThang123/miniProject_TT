@@ -4,7 +4,7 @@ module.exports = {
     
     getProjects: async(req, res, next) => {
         try {
-            const projects = await projectModel.find()
+            const projects = await projectModel.find().populate('owner', 'name phoneNumbers')
             if (!projects) return res.status(404).json({message: "Not Found"})
             return res.status(200).json(projects)
         } catch(err) {
@@ -15,7 +15,7 @@ module.exports = {
     getOneProject: async(req, res, next) => {
         try {
             const id = req.params.id
-            const project = await projectModel.findById(id)
+            const project = await projectModel.findById(id).populate('owner', 'name phoneNumbers')
             if (!project) return res.status(404).json({message: "Not Found"})
             return res.status(200).json(project)
         } catch(err) {
@@ -37,7 +37,7 @@ module.exports = {
         try {
             const id = req.params.id
             const body = req.body
-            const updatedProject = await projectModel.finByIdAndUpdate(id, body, {new: true})
+            const updatedProject = await projectModel.findByIdAndUpdate(id, body, {new: true}).populate('owner', 'name phoneNumbers')
             return res.status(200).json(updatedProject)
         } catch(err) {
             next(err)
@@ -47,10 +47,11 @@ module.exports = {
     deleteProject: async(req, res, next) => {
         try {
             const id = req.params.id
-            const deletedProject = await projectModel.finByIdAndDelete(id)
+            const deletedProject = await projectModel.findByIdAndDelete(id).populate('owner', 'name phoneNumbers')
             return res.status(200).json(deletedProject)
         } catch (err) {
             next(err)
         }
     }
 }
+

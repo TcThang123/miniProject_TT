@@ -24,17 +24,17 @@ const customerSchema = Schema({
         lowercase: true,
         trim: true
     },
-    phoneNumber: [{
+    phoneNumbers: [{
         type: String,
         trim: true
     }],
-    adress: [{
+    addresses: [{
         type: String,
         trim: true
     }],
     project: {
         type: Schema.Types.ObjectId,
-        ref: "projectModel"
+        ref: "project"
     },
     status: {
         type: String,
@@ -43,7 +43,7 @@ const customerSchema = Schema({
     },
     sale: [{
         type: Schema.Types.ObjectId,
-        ref: "saleModel"
+        ref: "sale"
     }]
 }, {
     timestamps: true,

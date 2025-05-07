@@ -1,0 +1,29 @@
+[
+    {
+      "name": "Nguyễn Văn A",
+      "gender": "male",
+      "birthDate": "1990-05-15",
+      "email": "nva@example.com",
+      "phoneNumbers": ["0912345678"],
+      "addresses": ["12 Trần Hưng Đạo, Hà Nội"],
+      "project": "662a6b9e3b59d2c7e78b34f1",
+      "status": "active",
+      "sale": ["66267fdb43078be2e1f037a1"],
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-02-01T10:00:00Z"
+    },
+    {
+      "name": "Trần Thị B",
+      "gender": "female",
+      "birthDate": "1995-03-20",
+      "email": "ttb@example.com",
+      "phoneNumbers": ["0922333444"],
+      "addresses": ["88 Nguyễn Trãi, HCM"],
+      "project": "662a6b9e3b59d2c7e78b34f2",
+      "status": "draft",
+      "sale": ["66267fdb43078be2e1f037a2"],
+      "createdAt": "2025-01-05T11:00:00Z",
+      "updatedAt": "2025-02-05T11:00:00Z"
+    }
+  ]
+  

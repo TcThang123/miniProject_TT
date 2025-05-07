@@ -15,17 +15,17 @@ const saleSchema = Schema({
         enum: ["male", "female", "other"],
         required: true
     },
-    phoneNumber: [{
+    phoneNumbers: [{
         type: String,
         trim: true
     }],
-    address: [{
+    addresses: [{
         type: String,
         trim: true
     }],
     project: {
         type: Schema.Types.ObjectId,
-        ref: "projectModel"
+        ref: "project"
     }
 }, {
     timestamps: true,
