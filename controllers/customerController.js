@@ -1,5 +1,6 @@
 const customerModel = require("../models/customerModel")
 const fs = require("fs")
+const path = require("path")
 
 module.exports = {
 
@@ -69,6 +70,35 @@ module.exports = {
                 data: result
             })
         } catch(err) {
+            next(err)
+        }
+    },
+
+    exportCustomers: async(req, res, next) => {
+        try {
+            const { minAge = 0, maxAge = 120, gender = 'all', createdFrom, createdTo} = req.body
+            const today = new Date()
+            const fromBirthDate = new Date(today.getFullYear() - maxAge, today.getMonth(), today.getDate())
+            const toBirthDate  = new Date(today.getFullYear() - minAge, today.getMonth(), today.getDate())
+            const filter = {}
+            //filter gender
+            if (gender !== 'all') {
+                filter.gender = gender
+            }
+            //filter age range
+            filter.birthDate = { $gte: fromBirthDate, $lte: toBirthDate }
+            //filter date range
+            if (createdFrom && createdTo) {
+                filter.createdAt = { $gte: new Date(createdFrom), $lte: new Date(createdTo) }
+            }
+            console.log(filter)
+
+            const customers = await customerModel.find(filter).populate('project sale', 'name description phoneNumbers')
+            const filePath = path.join(__dirname, "../exports/customers_export.json")
+            fs.writeFileSync(filePath, JSON.stringify(customers, null, 2))
+            res.download(filePath, "customer_export.json")
+            
+        } catch (err) {
             next(err)
         }
     }

@@ -26,5 +26,6 @@ const upload = require("../middlewares/upload")
 //const upload = multer({ dest: 'uploads/' })
 
 router.post("/import", upload.single("file"), customerController.importCustomers)
+router.post("/export", customerController.exportCustomers)
 
 module.exports = router
